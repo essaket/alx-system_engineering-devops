@@ -1,2 +1,2 @@
 #!/bin/bash
-1, it should be 2;
+pwd
