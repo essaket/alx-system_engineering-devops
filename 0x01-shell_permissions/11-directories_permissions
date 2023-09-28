@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod -R ago
+chmod -R a+x */
