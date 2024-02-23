@@ -27,7 +27,13 @@ int main(void)
 	for (x = 0; x <= 4; x++)
 	{
 		zombie = fork();
-		printf("Zombie process created, PID: %d\n", zombie);
+		if (zombie > 0)
+		{
+			printf("Zombie process created, PID: %d\n", zombie);
+			infinite_while();
+		}
+		else
+			return (0);
 	}
 	infinite_while();
 	return (0);
