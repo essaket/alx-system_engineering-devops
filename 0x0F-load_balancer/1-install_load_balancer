@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Installs and setup haproxy
+
+# Updating and installing haproxy
+sudo apt-get -y update
+sudo apt-get -y install haproxy
+
+# Enable HAProxy by writing "ENABLED=1" to the configuration file /etc/default/haproxy
+echo "ENABLED=1" > /etc/default/haproxy
+
+# Listen to web1 and web2 servers
+echo "
+   listen load_balancer
+   bind *:80
+   mode http
+   balance roundrobin
+   option httpclose
+   option forwardfor
+   server 531300-web-01 100.26.220.120 check
+   server 531300-web-02 100.25.132.77 check
+" >> /etc/haproxy/haproxy.cfg
+
+# Starting haproxy
+sudo service haproxy start
