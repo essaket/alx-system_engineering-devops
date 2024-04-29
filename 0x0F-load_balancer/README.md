@@ -13,17 +13,9 @@ load balancer on to manage both web servers.
 
 ## Tasks
 
-<details>
-<summary><a href="./0-custom_http_response_header">0. Double the number of webservers</a></summary><br>
-</details>
-
-<details>
-<summary><a href="./1-install_load_balancer">1. Install your load balancer</a></summary><br>
-</details>
-
-<details>
-<summary><a href="./2-puppet_custom_http_response_header.pp">2. Add a custom HTTP header with Puppet</a></summary><br>
-</details>
+- [0. Double the number of webservers](./0-custom_http_response_header)
+- [1. Install your load balancer](./1-install_load_balancer)
+- [2. Add a custom HTTP header with Puppet](./2-puppet_custom_http_response_header.pp)
 
 
 ---
