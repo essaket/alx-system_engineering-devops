@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Install nginx web server
+# Install nginx web server
 
 # Updating and installing Nginx
 sudo apt-get -y update
@@ -16,22 +16,22 @@ echo "Ceci n'est pas une page" > /var/www/html/404.html
 
 # Configuring Nginx
 printf %s "server {
-    listen 80 default_server; # Listen on port 80
-    listen [::]:80 default_server; # IPv6 support
-    add_header X-Served-By \$HOSTNAME; # Add a custom header with server hostname
-    root   /var/www/html; Root directory for web server
-    index  index.html; # Default index file
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    add_header X-Served-By \$HOSTNAME;
+    root   /var/www/html;
+    index  index.html index.htm;
 
-    location /redirect_me {   # Redirect location
-        return 301 https://github.com/essaket/;  # Redirect to github.com/essaket/
+    location /redirect_me {
+        return 301 http://cuberule.com/;
     }
 
-    error_page 404 /404.html; # Custom error page for 404
-    location /404 {  # Location for 404 errors
-      root /var/www/html;  # Serve 404 page from /var/www/html
-      internal;  # Only accessible internally
+    error_page 404 /404.html;
+    location /404 {
+      root /var/www/html;
+      internal;
     }
-}" > /etc/nginx/sites-available/default  # write server configuration to Nginx config file
+}" > /etc/nginx/sites-available/default
 
 # Starting nginx
 sudo service nginx start
