@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # This script is based on task 0, making the fix short and sweet
-
-# Create a symbolic link to the default configuration file
-sudo ln -sf /etc/nginx/sites-available/default  /etc/nginx/sites-enabled/default
-pkill -1 nginx
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx start
+kill "$(pgrep 'nginx' | head -1)"
