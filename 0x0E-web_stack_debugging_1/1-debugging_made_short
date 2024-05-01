@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 # This script is based on task 0, making the fix short and sweet
+
+# Create a symbolic link to the default configuration file
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+# Start the Nginx service
 service nginx start
+
+# Find the PID of the first Nginx process and kill it
 kill "$(pgrep 'nginx' | head -1)"
