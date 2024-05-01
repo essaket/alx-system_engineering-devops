@@ -4,5 +4,8 @@
 # Create a symbolic link to the default configuration file
 ln -sf /etc/nginx/sites-available/default  /etc/nginx/sites-enabled/default
 
-# Send a signal to Nginx to reload its configuration
-pkill -1 nginx
+# Start the Nginx service
+service nginx start
+
+# Find the PID of the first Nginx process and kill it
+kill "$(pgrep 'nginx' | head -1)"
