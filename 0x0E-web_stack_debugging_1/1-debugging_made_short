@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This script is based on task 0, making the fix short and sweet
+
+# Create a symbolic link to the default configuration file
+ln -sf /etc/nginx/sites-available/default  /etc/nginx/sites-enabled/default
+
+# Send a signal to Nginx to reload its configuration
+pkill -1 nginx
