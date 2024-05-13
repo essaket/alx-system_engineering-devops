@@ -1,0 +1,17 @@
+# Install UFW (Uncomplicated Firewall)
+sudo apt-get install ufw
+
+# Check the status of UFW
+sudo ufw status
+
+# Enable UFW with default settings
+sudo ufw enable -y
+
+# Set default policies to deny incoming and allow outgoing traffic
+sudo ufw default deny incoming -y
+sudo ufw default allow outgoing -y
+
+# Allow incoming traffic on specific ports
+sudo ufw allow 22/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 80/tcp
