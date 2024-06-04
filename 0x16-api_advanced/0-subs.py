@@ -1,28 +1,18 @@
 #!/usr/bin/python3
-""" Number of subscribers """
-
-
-from requests import get, session
+""" script to obtain subscribers
+    count from a subreddit
+"""
+from requests import get
 
 
 def number_of_subscribers(subreddit):
-    """ Returns the number of subscribers for a given subreddit """
-    username = 'HiSaysMoody'
-    password = 'ALXtest1#'
-    headers = {"User-Agent": "Mozilla/5.0"}
-    se4 = session()
-    se4.headers = headers
-    user_pass_dict = {'user': username,
-                      'passwd': password,
-                      'api_type': 'json'}
-    r = se4.post(r'https://www.reddit.com/api/login', data=user_pass_dict)
-    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    response = se4.get(url, allow_redirects=False)
-    if response.status_code != 200:
-        return 0
-    data = response.json()
-    if "data" not in data:
-        return 0
-    if "subscribers" not in data["data"]:
-        return 0
-    return data["data"]["subscribers"]
+    """ function to get subscriber count"""
+    if subreddit and type(subreddit) is str:
+        subscribers = 0
+        url = 'https://reddit.com/r/{}/about.json'.format(subreddit)
+        headers = {'user-agent': 'my-app/0.0.1'}
+        req = get(url, headers=headers)
+        if req.status_code == 200:
+            data = req.json()
+            subscribers = data.get('data', {}).get('subscribers', 0)
+        return subscribers
