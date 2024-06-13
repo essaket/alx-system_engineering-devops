@@ -1,10 +1,11 @@
+#server
 server {
-    listen 80 defaultserver;
+    listen 80 default_server;
 
     listen [::]:80 default_server;
     root /var/www/html;
     index index.html index.htm index.nginx-debian.html;
-    server_name ;
+    server_name _;
     add_header X-Served-By $hostname;
     location /hbnb_static {
         alias /data/web_static/current/;
@@ -14,7 +15,7 @@ server {
         try_files $uri $uri/ =404;
     }
     location / {
-        proxy_pass http://0.0.0.0:5003/;
+        proxy_pass http://0.0.0.0:5003;
     }
     location /airbnb-onepage {
         proxy_pass http://0.0.0.0:5000/airbnb-onepage;
@@ -23,7 +24,7 @@ server {
         proxy_pass http://0.0.0.0:5001/number_odd_or_even/$1;
     }
     location /api/ {
-        proxy_pass http://0.0.0.0:5002/;
+        proxy_pass http://0.0.0.0:5002;
     }
     if ($request_filename ~ redirect_me){
         rewrite ^ https://th3-gr00t.tk/ permanent;
